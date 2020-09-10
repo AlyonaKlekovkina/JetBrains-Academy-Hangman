@@ -3,13 +3,26 @@ import random
 
 
 def check_letter():
+    global n, set_to_print
     letter = input("Input a letter: ")
     if letter in the_word:
-        guessed_letters.add(letter)
-        return to_print
+        if letter in guessed_letters:
+            print("No improvements")
+            n -= 1
+            if n == 0:
+                print("You are hanged!")
+        else:
+            guessed_letters.add(letter)
+            set_to_print = set(the_word)
+            if len(set_to_print) == len(guessed_letters):
+                print("You guessed the word!\nYou survived!")
+            else:
+                return to_print
     else:
         print("No such letter in the word")
-
+        n -= 1
+        if n == 0:
+            print("You are hanged!")
 
 print("H A N G M A N")
 the_list = ['python', 'java', 'kotlin', 'javascript']
@@ -28,6 +41,4 @@ while n > 0:
     print("\n", to_print, sep="")
 
     check = check_letter()
-    n -= 1
-    if n == 0:
-        print("\nThanks for playing!\nWe'll see how well you did in the next stage")
+    set_to_print = set(the_word)
