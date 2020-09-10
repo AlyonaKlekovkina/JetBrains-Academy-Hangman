@@ -41,21 +41,27 @@ def check_input():
 
 
 print("H A N G M A N")
-the_list = ['python', 'java', 'kotlin', 'javascript']
-the_word = random.choice(the_list)
-guessed_letters = set()
-all_inputted_letters = set()
-n = 8
-while n > 0:
-    to_print = ''
+while True:
+    start_input = input('Type "play" to play the game, "exit" to quit: ')
+    if start_input == 'play':
+        the_list = ['python', 'java', 'kotlin', 'javascript']
+        the_word = random.choice(the_list)
+        guessed_letters = set()
+        all_inputted_letters = set()
+        n = 8
+        while n > 0:
+            to_print = ''
 
-    for i in the_word:
-        if i in guessed_letters:
-            to_print += i
-        else:
-            to_print += '-'
+            for i in the_word:
+                if i in guessed_letters:
+                    to_print += i
+                else:
+                    to_print += '-'
 
-    print("\n", to_print, sep="")
+            print("\n", to_print, sep="")
 
-    check = check_letter()
-    set_to_print = set(the_word)
+            check = check_letter()
+            set_to_print = set(the_word)
+        continue
+    elif start_input == 'exit':
+        break
