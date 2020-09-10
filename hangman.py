@@ -8,10 +8,7 @@ def check_letter():
     if check_input():
         if letter in the_word:
             if letter in guessed_letters:
-                print("No improvements")
-                n -= 1
-                if n == 0:
-                    print("You are hanged!")
+                print("You already typed this letter")
             else:
                 guessed_letters.add(letter)
                 set_to_print = set(the_word)
@@ -23,7 +20,6 @@ def check_letter():
         else:
             if letter in all_inputted_letters:
                 print("You already typed this letter")
-                n -= 1
             else:
                 print("No such letter in the word")
                 all_inputted_letters.add(letter)
@@ -39,7 +35,7 @@ def check_input():
         print("You should input a single letter")
         return False
     if not letter.islower():
-        print("It is not and ASCII lowercase letter")
+        print("It is not an ASCII lowercase letter")
         return False
     return True
 
